@@ -1,3 +1,4 @@
 object @asset
 
-attributes :title, :file, :id
+attributes :title, :id
+node(:url) {  |file| file.file.url }

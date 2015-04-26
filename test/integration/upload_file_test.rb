@@ -2,6 +2,7 @@ require "test_helper"
 require "uploaders/asset"
 require "models/asset"
 require "app"
+require "pry"
 
 describe "Upload a file" do 
 
@@ -32,6 +33,10 @@ describe "Upload a file" do
 
   it "retrieves the actual filename" do
     last_response.body.must_include "zip.zip"
+  end
+
+  it "retrieves the full path of the file" do 
+    last_response.body.must_include "public/uploads/assets"
   end
 
 end

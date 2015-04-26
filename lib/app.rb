@@ -8,11 +8,15 @@ module API
     formatter :json, Grape::Formatter::Rabl
 
     resource :files do 
+
+      get '/', rabl: "assets/collection" do
+        @assets = Asset.all
+      end
+
+
       post '/', rabl: "assets/item" do
         @asset = Asset.new params[:file]
         @asset.save
-
-        @asset.inspect
       end
     end
   end
