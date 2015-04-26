@@ -1,5 +1,5 @@
 module API 
-  class App < Grape::API
+  class AppV2 < Grape::API
     version :v2, using: :path
 
 
