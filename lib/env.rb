@@ -4,9 +4,7 @@ Bundler.require
 Bundler.require :production
 
 
-# Not requred at this time.
-
-# CarrierWave.configure do |config|
-#   config.root = File.expand_path "../../", __FILE__
-#   config.cache_dir = File.expand_path "../../public", __FILE__
-# end
+CarrierWave.configure do |config|
+  config.root = File.expand_path "../../", __FILE__
+  config.cache_dir = File.expand_path "../../public", __FILE__
+end

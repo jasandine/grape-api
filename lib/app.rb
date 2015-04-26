@@ -4,6 +4,9 @@ module API
       env['api.tilt.root'] = File.join Dir.pwd, "lib/views"
     end
 
+    default_format :json
+    formatter :json, Grape::Formatter::Rabl
+
     resource :files do 
       post '/', rabl: "assets/item" do
         @asset = Asset.new params[:file]
