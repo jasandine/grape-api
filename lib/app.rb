@@ -19,5 +19,13 @@ module API
         @asset.save
       end
     end
+
+    resource :users do
+      post "/", rabl: "users/item" do
+        @user = User.new params[:user]
+        @user.save
+      end
+    end
+
   end
 end
