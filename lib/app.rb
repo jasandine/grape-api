@@ -1,11 +1,15 @@
 module API 
   class App < Grape::API
-    resource :files do 
-      post do
-        asset = Asset.new params[:file]
-        asset.save
+    use Rack::Config do |env|
+      env['api.tilt.root'] = File.join Dir.pwd, "lib/views"
+    end
 
-        asset.inspect
+    resource :files do 
+      post '/', rabl: "assets/item" do
+        @asset = Asset.new params[:file]
+        @asset.save
+
+        @asset.inspect
       end
     end
   end
