@@ -1,6 +1,6 @@
 module API 
   class App < Grape::API
-    version :v1, using: :accept_version_header
+    version :v2, using: :path
 
 
     use Rack::Config do |env|
@@ -11,9 +11,11 @@ module API
     formatter :json, Grape::Formatter::Rabl
 
     resource :files do 
+
       get '/', rabl: "assets/collection" do
         @assets = Asset.all
       end
+
 
       post '/', rabl: "assets/item" do
         @asset = Asset.new params[:file]
