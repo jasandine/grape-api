@@ -5,6 +5,7 @@ gem "carrierwave"
 gem "sqlite3"
 gem "sequel"
 gem "carrierwave-sequel"
+gem "grape-rabl", require: "grape/rabl"
 
 group :test do
   gem "minitest", require: false
