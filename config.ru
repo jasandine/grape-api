@@ -5,6 +5,7 @@ require "lib/uploaders/asset"
 require "lib/models/asset"
 require "lib/models/user"
 require "lib/apps/v2"
+require "lib/apps/v2public"
 
 use Rack::Static,
   urls: ["/uploads"],

@@ -12,7 +12,7 @@ describe "Downloading the file as another user" do
     API::AppV2Public
   end
 
-  let(:id) { 100 }
+  let(:id) { 103 }
   let(:path) { "/v2/files/#{id}/download" }
 
   it "downloads a file as another user" do
