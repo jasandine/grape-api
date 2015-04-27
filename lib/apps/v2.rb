@@ -21,6 +21,14 @@ module API
       get '/', rabl: "assets/collection" do
         @assets = Asset.all
       end
+      
+      params do
+        requires :id, type: Integer
+      end
+      
+      get "/:id", rabl: "assets/item" do
+        @asset = Asset[params[:id]]
+      end
 
 
       post '/', rabl: "assets/item" do

@@ -2,7 +2,6 @@ module API
   class App < Grape::API
     version :v1, using: :accept_version_header
 
-
     use Rack::Config do |env|
       env['api.tilt.root'] = File.join Dir.pwd, "lib/views"
     end
@@ -10,7 +9,7 @@ module API
     default_format :json
     formatter :json, Grape::Formatter::Rabl
 
-    resource :files do 
+    resource :files do
       get '/', rabl: "assets/collection" do
         @assets = Asset.all
       end
@@ -27,6 +26,5 @@ module API
         @user.save
       end
     end
-
   end
 end
