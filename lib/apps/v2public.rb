@@ -9,7 +9,7 @@ module API
 
           redirect path
         else
-          error! "You're not allowed to download this file."
+          error! "You're not allowed to download this file.", 403
         end
       end
     end
