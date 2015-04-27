@@ -6,7 +6,8 @@ module API
     use Rack::Config do |env|
       env['api.tilt.root'] = File.join Dir.pwd, "lib/views"
     end
-
+    
+    format :json
     default_format :json
     formatter :json, Grape::Formatter::Rabl
 
@@ -26,6 +27,13 @@ module API
         params[:file][:user_id] = @@user.id
         @asset = Asset.new params[:file]
         @asset.save
+      end
+
+      get '/:id/download' do
+        file = Asset[params[:id]]
+        path = file.file_url.gsub("public/","")
+
+        redirect path
       end
     end
 

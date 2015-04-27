@@ -3,6 +3,11 @@ require "lib/env"
 
 require "lib/uploaders/asset"
 require "lib/models/asset"
-require "lib/app"
+require "lib/models/user"
+require "lib/apps/v2"
 
-run API::App
+use Rack::Static,
+  urls: ["/uploads"],
+  root: "public"
+
+run API::AppV2
