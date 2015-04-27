@@ -10,6 +10,11 @@ module API
     default_format :json
     formatter :json, Grape::Formatter::Rabl
 
+    http_basic do |handler, password|
+      user = User.where(handler: handler).first
+      user.authorized? password
+    end
+
     resource :files do 
 
       get '/', rabl: "assets/collection" do

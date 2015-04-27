@@ -5,4 +5,4 @@ require "lib/uploaders/asset"
 require "lib/models/asset"
 require "lib/app"
 
-run API::App 
+run API::App
