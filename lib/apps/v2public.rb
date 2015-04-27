@@ -4,9 +4,13 @@ module API
     resources :files do
       get "/:id/download" do
         file = Asset[params[:id]]
-        path = file.file_url.gsub("public/","")
+        if file.can_be_downloaded_with? params[:receiver]
+          path = file.file_url.gsub("public/","")
 
-        redirect path
+          redirect path
+        else
+          error! "You're not allowed to download this file."
+        end
       end
     end
   end

@@ -22,7 +22,6 @@ describe "Downloading the file as another user" do
   end
 
   it "fails to download the file as the incorrect user" do
-    skip
     get path, receiver: "you@you.com"
 
     last_response.status.must_equal 403 #forbidden
