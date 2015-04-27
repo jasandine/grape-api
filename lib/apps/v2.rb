@@ -11,8 +11,8 @@ module API
     formatter :json, Grape::Formatter::Rabl
 
     http_basic do |handler, password|
-      user = User.where(handler: handler).first
-      user.authorized? password
+      @@user = User.where(handler: handler).first
+      @@user.authorized? password
     end
 
     resource :files do 
@@ -23,6 +23,7 @@ module API
 
 
       post '/', rabl: "assets/item" do
+        params[:file][:user_id] = @@user.id
         @asset = Asset.new params[:file]
         @asset.save
       end
