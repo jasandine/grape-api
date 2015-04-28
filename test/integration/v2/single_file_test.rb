@@ -20,9 +20,9 @@ describe "Retrieving a single file" do
   end
 
   it "complains about a bad id" do
-  	skip
+
     authorize "joey", "holler" 
-    get "/v2/files/zip.zip"
+    get "/v2/files/zip"
 
     last_response.status.must_equal 400
   end
